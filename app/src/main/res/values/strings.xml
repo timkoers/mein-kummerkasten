@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Mein Kummerkasten</string>
+    <string name="open">Öffnen</string>
+    <string name="close">Schließen</string>
+</resources>

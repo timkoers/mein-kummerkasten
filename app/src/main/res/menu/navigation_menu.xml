@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_problem"
+        android:icon="@mipmap/ic_report_black_24dp"
+        android:title="Problem mitteilen"/>
+
+    <item android:id="@+id/nav_faq"
+        android:icon="@mipmap/ic_help_black_24dp"
+        android:title="Häufige Fragen"/>
+
+    <item android:id="@+id/nav_team"
+        android:icon="@mipmap/ic_people_black_24dp"
+        android:title="Das Team"/>
+
+</menu>
