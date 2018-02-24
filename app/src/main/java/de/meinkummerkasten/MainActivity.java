@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     
     @Override
     public boolean onNavigationItemSelected(final MenuItem item) {
-
-        case (item.getItemId()){
+    
+        switch (item.getItemId()){
             case R.id.nav_problem:
                 if(webView != null){
                     webView.loadUrl("http://mein-kummerkasten.de/problem");
@@ -69,7 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if(webView != null){
                     webView.loadUrl("http://mein-kummerkasten.de/team");
                 }
-                break;        
+                break; 
+        }
     }
 
     @Override
