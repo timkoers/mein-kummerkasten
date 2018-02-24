@@ -1,5 +1,6 @@
 package de.meinkummerkasten;
 
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -29,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawerLayout);
         mNavigationView = (NavigationView)findViewById(R.id.navigation_menu);
-        
+
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
         mNavigationView.setNavigationItemSelectedListener(this);
-        
+
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
@@ -49,35 +50,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     @Override
     public boolean onNavigationItemSelected(final MenuItem item) {
-    
+
         switch (item.getItemId()){
             case R.id.nav_problem:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/problem");
+                    webView.loadUrl("http://mein-kummerkasten.de/Einstellen");
+                    mDrawerLayout.closeDrawers();
                 }
                 break;
             case R.id.nav_faq:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/faq");
+                    webView.loadUrl("http://mein-kummerkasten.de/FAQ");
+                    mDrawerLayout.closeDrawers();
                 }
                 break;
-            
+
             case R.id.nav_team:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/team");
+                    webView.loadUrl("http://mein-kummerkasten.de/Team");
+                    mDrawerLayout.closeDrawers();
                 }
-                break; 
+                break;
         }
+
+        return true;
     }
 
     @Override
     public void onBackPressed() {
+        mDrawerLayout.closeDrawers();
+
         if (webView.canGoBack()) {
             webView.goBack();
         } else {
+            mDrawerLayout.closeDrawers();
             super.onBackPressed();
         }
     }
