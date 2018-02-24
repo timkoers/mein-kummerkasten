@@ -9,11 +9,11 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
-
+    private NavigationView mNavigationView;
     private WebView webView;
 
     @Override
@@ -28,8 +28,12 @@ public class MainActivity extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
 
         mDrawerLayout= (DrawerLayout) findViewById(R.id.drawerLayout);
+        mNavigationView = (NavigationView)findViewById(R.id.navigation_menu);
+        
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
+        mNavigationView.setNavigationItemSelectedListener(this);
+        
         mDrawerLayout.addDrawerListener(mToggle);
         mToggle.syncState();
 
@@ -44,6 +48,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    
+    @Override
+    public boolean onNavigationItemSelected(final MenuItem item) {
+
+        case (item.getItemId()){
+            case R.id.nav_problem:
+                if(webView != null){
+                    webView.loadUrl("http://mein-kummerkasten.de/problem");
+                }
+                break;
+            case R.id.nav_faq:
+                if(webView != null){
+                    webView.loadUrl("http://mein-kummerkasten.de/faq");
+                }
+                break;
+            
+            case R.id.nav_team:
+                if(webView != null){
+                    webView.loadUrl("http://mein-kummerkasten.de/team");
+                }
+                break;        
     }
 
     @Override
