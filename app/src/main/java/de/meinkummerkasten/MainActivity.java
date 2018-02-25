@@ -18,14 +18,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView mNavigationView;
     private WebView webView;
 
+    private String problemURL = "http://mein-kummerkasten.de/Einstellen";
+    private String faqURL = "http://mein-kummerkasten.de/FAQ";
+    private String teamURL = "http://mein-kummerkasten.de/Team";
+    private String mainURL = "http://mein-kummerkasten.de";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         webView = (WebView) findViewById(R.id.webview);
-        webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("http://mein-kummerkasten.de");
-
+        webView.setWebViewClient(new WebViewClient(){
+            public void onPageFinished(WebView view, String url){
+                   switch(url){
+                    
+                       case problemURL:
+                            mNavigationView.setCheckedItem(R.id.nav_problem);
+                           break;
+                           
+                       case faqURL:
+                           mNavigationView.setCheckedItem(R.id.nav_faq);
+                           break;
+                           
+                       case teamURL:
+                           
+                           break;
+                   }
+                           
+            }            
+        });
+        webView.loadUrl(mainURL);
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
@@ -58,20 +80,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.nav_problem:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/Einstellen");
+                    webView.loadUrl(problemURL);
                     mDrawerLayout.closeDrawers();
                 }
                 break;
             case R.id.nav_faq:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/FAQ");
+                    webView.loadUrl(faqURL);
                     mDrawerLayout.closeDrawers();
                 }
                 break;
 
             case R.id.nav_team:
                 if(webView != null){
-                    webView.loadUrl("http://mein-kummerkasten.de/Team");
+                    webView.loadUrl(teamURL);
                     mDrawerLayout.closeDrawers();
                 }
                 break;
