@@ -81,14 +81,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onBackPressed() {
-        mDrawerLayout.closeDrawers();
-
-        if (webView.canGoBack()) {
-            webView.goBack();
-        } else {
-            mDrawerLayout.closeDrawers();
-            super.onBackPressed();
-        }
+        
+        if(mDrawerLayout.isDrawerOpen(GravityCompat.START) | mDrawerLayout.isDrawerOpen(GravityCompat.END)) { // Opened from left to right, or from right to left
+          mDrawerLayout.closeDrawers();
+        }else{
+            if (webView.canGoBack()) {
+                webView.goBack();
+            } else {
+                super.onBackPressed();
+            }
+        }        
     }
 
 }
