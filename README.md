@@ -1,6 +1,6 @@
 # Mein-Kummerkasten.de
 
-Unofficial development repository of an Android app for a German website which answers (anonymous) questions from teenagers and provides information about common problems. The website is accessable at [mein-kummerkasten.de](http://mein-kummerkasten.de)
+Unofficial development repository of an Android app for a German website which aims to provide an anonymous help-line for sorrow people. The website is accessable at [mein-kummerkasten.de](http://mein-kummerkasten.de)
 
 ## Architecture and Philosophies
 
